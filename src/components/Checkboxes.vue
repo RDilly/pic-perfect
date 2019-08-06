@@ -1,18 +1,30 @@
 <template>
-  <div>
-    <div class="boxes">
-      <input type="checkbox" id="checkbox" v-model="boolean1" />
-      <label for="checkbox">Red Eye Reduction</label>
-      <input type="checkbox" id="checkbox" v-model="boolean2" />
-      <label for="checkbox">Sharpen Image</label>
-      <input type="checkbox" id="checkbox" v-model="boolean3" />
-      <label for="checkbox">Portriate Mode</label>
-      <input type="checkbox" id="checkbox" v-model="boolean4" />
-      <label for="checkbox">Film Effect</label>
-      <input type="checkbox" id="checkbox" v-model="boolean5" />
-      <label for="checkbox">Add Pouty Lips</label>
+  <div class="container">
+    <div class="options">
+      <p class="label_field_pair">
+        <label for="checkbox1">Red Eye Reduction</label>
+        <input type="checkbox" id="checkbox1" v-model="boolean1" />
+      </p>
+      <p class="label_field_pair">
+        <label for="checkbox2">Sharpen Image</label>
+        <input type="checkbox" id="checkbox2" v-model="boolean2" />
+      </p>
+      <p class="label_field_pair">
+        <label for="checkbox3">Portriate Mode</label>
+        <input type="checkbox" id="checkbox3" v-model="boolean3" />
+      </p>
+      <p class="label_field_pair">
+        <label for="checkbox4">Film Effect</label>
+        <input type="checkbox" id="checkbox4" v-model="boolean4" />
+      </p>
+      <p class="label_field_pair">
+        <label for="checkbox5">Add Pouty Lips</label>
+        <input type="checkbox" id="checkbox5" v-model="boolean5" />
+      </p>
     </div>
-    <button v-on:click="makePerfect()">Make this Picture Perfect!</button>
+    <button class="button" v-on:click="makePerfect()">
+      Make this Picture Perfect!
+    </button>
     <img :src="image" />
   </div>
 </template>
@@ -52,13 +64,45 @@ export default {
 </script>
 
 <style scoped>
-.boxes {
-  display: flex;
-  flex-direction: column;
+.container {
+  display: grid;
+  grid-template-columns: [first] 80px [line2] 80px [line3] auto [line4] 80px [line5] 80px [end];
+  grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-line];
+}
+
+.options {
+  grid-column-start: line4;
+  grid-column-end: span end;
+  grid-row-start: 2;
+  grid-row-end: span 2;
+  border-radius: 10px;
+  background: #bada55;
+  /* height: 200px; */
+  /* width: 200px; */
+}
+
+button {
+  margin-top: 4px;
+  grid-column-start: line4;
+  grid-column-end: span end;
+  grid-row-start: 4;
+  border-radius: 10px;
+  background: #8be9e9;
+  border-width: 0ch;
+}
+
+label,
+input[type='checkbox'] {
+  display: inline-block;
+  margin-top: 6px;
+}
+
+label {
+  width: 10em;
 }
 
 table {
-  width: 100%;
+  width: 10%;
   table-layout: fixed;
 }
 th {
