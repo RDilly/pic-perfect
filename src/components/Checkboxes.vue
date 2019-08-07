@@ -21,17 +21,38 @@
         <label for="checkbox5">Add Pouty Lips</label>
         <input type="checkbox" id="checkbox5" v-model="boolean5" />
       </p>
+      <form>
+        <span>Color Filter</span>
+        <br />
+        <input class="radio" type="radio" name="color" value="white" checked />
+        <input class="radio" type="radio" name="color" value="brown" />
+        <input class="radio" type="radio" name="color" value="blue" />
+
+        <br />
+        <img class="color-square" src="../assets/white.png" alt />
+        <img class="color-square" src="../assets/brown.png" alt />
+        <img class="color-square" src="../assets/blue.png" alt />
+      </form>
     </div>
     <button class="button" v-on:click="makePerfect()">
       Make this Picture Perfect!
     </button>
-    <img :src="image" />
+    <div class="before">
+      <Uploader />
+    </div>
+
+    <img class="after" :src="image" />
   </div>
 </template>
 
 <script>
+import Uploader from '@/components/Uploder.vue'
+
 export default {
   name: 'Checkboxes',
+  components: {
+    Uploader
+  },
   data: () => ({
     image: 'attempt',
     boolean1: false,
@@ -66,7 +87,7 @@ export default {
 <style scoped>
 .container {
   display: grid;
-  grid-template-columns: [first] 80px [line2] 80px [line3] auto [line4] 80px [line5] 80px [end];
+  grid-template-columns: [first] auto [line2] auto [line4] 80px [line5] 80px [end];
   grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-line];
 }
 
@@ -79,6 +100,26 @@ export default {
   background: #bada55;
   /* height: 200px; */
   /* width: 200px; */
+}
+
+.before {
+  grid-column-start: line2;
+  grid-column-end: span line4;
+  grid-row-start: 2;
+  grid-row-end: span 2;
+  border-radius: 10px;
+}
+
+.after {
+  grid-column-start: first;
+  grid-column-end: span line2;
+  grid-row-start: 2;
+  grid-row-end: span 2;
+  border-radius: 10px;
+}
+
+.color-square {
+  height: 23px;
 }
 
 button {
