@@ -1,5 +1,9 @@
 <template>
   <div class="container">
+    <div class="before">
+      <Uploader />
+    </div>
+
     <div class="options">
       <p class="label_field_pair">
         <label for="checkbox1">Red Eye Reduction</label>
@@ -24,9 +28,14 @@
       <form>
         <span>Color Filter</span>
         <br />
-        <input class="radio" type="radio" name="color" value="white" checked />
-        <input class="radio" type="radio" name="color" value="brown" />
-        <input class="radio" type="radio" name="color" value="blue" />
+        <input type="radio" name="color" value="standard" v-model="picked" />
+        <input
+          type="radio"
+          name="color"
+          value="brown-filter"
+          v-model="picked"
+        />
+        <input type="radio" name="color" value="blue-filter" v-model="picked" />
 
         <br />
         <img class="color-square" src="../assets/white.png" alt />
@@ -37,10 +46,6 @@
     <button class="button" v-on:click="makePerfect()">
       Make this Picture Perfect!
     </button>
-    <div class="before">
-      <Uploader />
-    </div>
-
     <img class="after" :src="image" />
   </div>
 </template>
@@ -59,7 +64,8 @@ export default {
     boolean2: false,
     boolean3: false,
     boolean4: false,
-    boolean5: false
+    boolean5: false,
+    picked: 'place'
   }),
   computed: {
     getTedPicture() {
@@ -75,7 +81,13 @@ export default {
   },
   methods: {
     getImgUrl(pic) {
-      return require('../assets/standard/' + pic)
+      if (this.picked == 'standard') {
+        return require('../assets/standard/' + pic)
+      } else if (this.picked == 'brown-filter') {
+        return require('../assets/brown-filter/' + pic)
+      } else if (this.picked == 'blue-filter') {
+        return require('../assets/blue-filter/' + pic)
+      }
     },
     makePerfect() {
       this.image = this.getImgUrl(this.getTedPicture)
@@ -103,16 +115,17 @@ export default {
 }
 
 .before {
-  grid-column-start: line2;
-  grid-column-end: span line4;
+  grid-column-start: first;
+  grid-column-end: span line2;
   grid-row-start: 2;
   grid-row-end: span 2;
   border-radius: 10px;
 }
 
 .after {
-  grid-column-start: first;
-  grid-column-end: span line2;
+  grid-column-start: line2;
+  grid-column-end: span line4;
+
   grid-row-start: 2;
   grid-row-end: span 2;
   border-radius: 10px;
