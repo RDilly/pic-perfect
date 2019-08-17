@@ -125,7 +125,6 @@ export default {
 .after {
   grid-column-start: line2;
   grid-column-end: span line4;
-
   grid-row-start: 2;
   grid-row-end: span 2;
   border-radius: 10px;
