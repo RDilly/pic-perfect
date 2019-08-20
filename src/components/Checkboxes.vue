@@ -1,53 +1,91 @@
 <template>
-  <div class="container">
-    <div class="before">
-      <Uploader />
-    </div>
+  <v-container fluid grid-list-xl>
+    <v-layout row justify-center>
+      <v-flex>
+        <v-layout row justify-space-around>
+          <v-card width="435" height="435" justify-center>
+            <v-card-title primary class="title">Before</v-card-title>
+            <Uploader />
+          </v-card>
+          <v-card width="435" height="435" justify-center>
+            <v-card-title primary class="title">After</v-card-title>
+            <!-- <v-card-media pa-4> -->
+            <img
+              class="justify-space-around ml-12"
+              width="335"
+              height="335"
+              :src="image"
+              pa-4
+            />
+            <!-- </v-card-media> -->
+          </v-card>
+        </v-layout>
+      </v-flex>
+    </v-layout>
 
-    <div class="options">
-      <p class="label_field_pair">
-        <label for="checkbox1">Red Eye Reduction</label>
-        <input type="checkbox" id="checkbox1" v-model="boolean1" />
-      </p>
-      <p class="label_field_pair">
-        <label for="checkbox2">Sharpen Image</label>
-        <input type="checkbox" id="checkbox2" v-model="boolean2" />
-      </p>
-      <p class="label_field_pair">
-        <label for="checkbox3">Portriate Mode</label>
-        <input type="checkbox" id="checkbox3" v-model="boolean3" />
-      </p>
-      <p class="label_field_pair">
-        <label for="checkbox4">Film Effect</label>
-        <input type="checkbox" id="checkbox4" v-model="boolean4" />
-      </p>
-      <p class="label_field_pair">
-        <label for="checkbox5">Add Pouty Lips</label>
-        <input type="checkbox" id="checkbox5" v-model="boolean5" />
-      </p>
-      <form>
-        <span>Color Filter</span>
-        <br />
-        <input type="radio" name="color" value="standard" v-model="picked" />
-        <input
-          type="radio"
-          name="color"
-          value="brown-filter"
-          v-model="picked"
-        />
-        <input type="radio" name="color" value="blue-filter" v-model="picked" />
+    <!-- <div class="options"> -->
+    <v-layout justify-space-around pa-4>
+      <v-flex d-flex>
+        <v-card xs3 dark color="secondary">
+          <p class="label_field_pair">
+            <label for="checkbox1">Red Eye Reduction</label>
+            <input type="checkbox" id="checkbox1" v-model="boolean1" />
+          </p>
+          <p class="label_field_pair">
+            <label for="checkbox2">Sharpen Image</label>
+            <input type="checkbox" id="checkbox2" v-model="boolean2" />
+          </p>
+          <p class="label_field_pair">
+            <label for="checkbox3">Portriate Mode</label>
+            <input type="checkbox" id="checkbox3" v-model="boolean3" />
+          </p>
+          <p class="label_field_pair">
+            <label for="checkbox4">Film Effect</label>
+            <input type="checkbox" id="checkbox4" v-model="boolean4" />
+          </p>
+          <p class="label_field_pair">
+            <label for="checkbox5">Add Pouty Lips</label>
+            <input type="checkbox" id="checkbox5" v-model="boolean5" />
+          </p>
+          <form>
+            <span>Color Filter</span>
+            <br />
+            <input
+              type="radio"
+              name="color"
+              value="standard"
+              v-model="picked"
+              checked
+            />
+            <input
+              type="radio"
+              name="color"
+              value="brown-filter"
+              v-model="picked"
+            />
+            <input
+              type="radio"
+              name="color"
+              value="blue-filter"
+              v-model="picked"
+            />
 
-        <br />
-        <img class="color-square" src="../assets/white.png" alt />
-        <img class="color-square" src="../assets/brown.png" alt />
-        <img class="color-square" src="../assets/blue.png" alt />
-      </form>
-    </div>
-    <button class="button" v-on:click="makePerfect()">
-      Make this Picture Perfect!
-    </button>
-    <img class="after" :src="image" />
-  </div>
+            <br />
+            <img class="color-square" src="../assets/white.png" alt />
+            <img class="color-square" src="../assets/brown.png" alt />
+            <img class="color-square" src="../assets/blue.png" alt />
+          </form>
+        </v-card>
+      </v-flex>
+    </v-layout>
+    <!-- </div> -->
+    <v-btn color="#474747" v-on:click="makePerfect()">
+      <span class="white--text font-weight-light">
+        Make This
+        <br />Picture Perfect!
+      </span>
+    </v-btn>
+  </v-container>
 </template>
 
 <script>
@@ -59,7 +97,7 @@ export default {
     Uploader
   },
   data: () => ({
-    image: 'attempt',
+    image: '@/assets/standard/11111.png',
     boolean1: false,
     boolean2: false,
     boolean3: false,
@@ -122,13 +160,13 @@ export default {
   border-radius: 10px;
 }
 
-.after {
+/* .after {
   grid-column-start: line2;
   grid-column-end: span line4;
   grid-row-start: 2;
   grid-row-end: span 2;
   border-radius: 10px;
-}
+} */
 
 .color-square {
   height: 23px;

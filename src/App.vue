@@ -1,28 +1,34 @@
 <template>
-  <div id="app">
-    <div id="nav"></div>
-    <router-view />
-  </div>
+  <v-app>
+    <v-app-bar app color="#474747">
+      <v-toolbar-title class="white--text headline text-uppercase">
+        <span class="blue--text">Perfect</span>
+        <span class="white--text font-weight-light">Photo Editor</span>
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+      <span class="white--text font-weight-light"
+        >Your photo will be 100% perfect every time.</span
+      >
+      <v-spacer></v-spacer>
+      <span class="white--text font-weight-light">About</span>
+    </v-app-bar>
+
+    <v-content>
+      <Checkboxes />
+    </v-content>
+  </v-app>
 </template>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
+<script>
+import Checkboxes from './components/Checkboxes.vue'
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+export default {
+  name: 'App',
+  components: {
+    Checkboxes
+  },
+  data: () => ({
+    //
+  })
 }
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+</script>

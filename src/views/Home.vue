@@ -1,17 +1,13 @@
 <template>
-  <div class="home">
-    <Checkboxes />
-  </div>
+  <HelloWorld />
 </template>
 
 <script>
-// @ is an alias to /src
-import Checkboxes from '@/components/Checkboxes.vue'
+import HelloWorld from '../components/HelloWorld'
 
 export default {
-  name: 'home',
   components: {
-    Checkboxes
+    HelloWorld
   }
 }
 </script>
