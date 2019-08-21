@@ -1,15 +1,14 @@
 <template>
-  <v-container fluid grid-list-xl>
-    <v-layout row justify-center>
-      <v-flex>
+  <v-container fluid grid-list-xl grey lighten-5>
+    <v-layout row>
+      <v-flex d-flex>
         <v-layout row justify-space-around>
-          <v-card width="435" height="435" justify-center>
+          <v-card width="435" height="435">
             <v-card-title primary class="title">Before</v-card-title>
             <Uploader />
           </v-card>
-          <v-card width="435" height="435" justify-center>
+          <v-card width="435" height="435">
             <v-card-title primary class="title">After</v-card-title>
-            <!-- <v-card-media pa-4> -->
             <img
               class="justify-space-around ml-12"
               width="335"
@@ -17,74 +16,75 @@
               :src="image"
               pa-4
             />
-            <!-- </v-card-media> -->
           </v-card>
+
+          <v-flex>
+            <v-layout row>
+              <v-flex d-flex>
+                <v-card xs3 dark color="secondary">
+                  <v-flex column>
+                    <v-form>
+                      <v-flex column pl-4>
+                        <v-checkbox
+                          v-model="boolean1"
+                          label="Reduce Red Eye"
+                        ></v-checkbox>
+                        <v-checkbox
+                          v-model="boolean2"
+                          label="Sharpen Image"
+                        ></v-checkbox>
+                        <v-checkbox
+                          v-model="boolean3"
+                          label="Portriat Mode"
+                        ></v-checkbox>
+                        <v-checkbox
+                          v-model="boolean4"
+                          label="Film Effect"
+                        ></v-checkbox>
+                        <v-checkbox
+                          v-model="boolean5"
+                          label="Add Pouty Lips"
+                        ></v-checkbox>
+                        <!-- <v-container grid-list-xs3> -->
+                        <v-radio-group
+                          v-model="picked"
+                          :mandatory="true"
+                          column
+                        >
+                          <v-flex no-gutters px-0 py-1 mx-0>
+                            <span>Choose Color Filter</span>
+                            <v-flex row no-gutters px-0 py-1 mx-0>
+                              <v-radio
+                                value="standard"
+                                color="grey lighten-3"
+                              ></v-radio>
+                              <v-radio
+                                value="brown-filter"
+                                color="brown lighten-2"
+                              ></v-radio>
+                              <v-radio
+                                value="blue-filter"
+                                color="cyan lighten-4"
+                              ></v-radio>
+                            </v-flex>
+                          </v-flex>
+                        </v-radio-group>
+                      </v-flex>
+                    </v-form>
+                    <v-btn color="info" v-on:click="makePerfect()">
+                      <span class="white--text font-weight-light">
+                        Make This
+                        <br />Picture Perfect!
+                      </span>
+                    </v-btn>
+                  </v-flex>
+                </v-card>
+              </v-flex>
+            </v-layout>
+          </v-flex>
         </v-layout>
       </v-flex>
     </v-layout>
-
-    <!-- <div class="options"> -->
-    <v-layout justify-space-around pa-4>
-      <v-flex d-flex>
-        <v-card xs3 dark color="secondary">
-          <p class="label_field_pair">
-            <label for="checkbox1">Red Eye Reduction</label>
-            <input type="checkbox" id="checkbox1" v-model="boolean1" />
-          </p>
-          <p class="label_field_pair">
-            <label for="checkbox2">Sharpen Image</label>
-            <input type="checkbox" id="checkbox2" v-model="boolean2" />
-          </p>
-          <p class="label_field_pair">
-            <label for="checkbox3">Portriate Mode</label>
-            <input type="checkbox" id="checkbox3" v-model="boolean3" />
-          </p>
-          <p class="label_field_pair">
-            <label for="checkbox4">Film Effect</label>
-            <input type="checkbox" id="checkbox4" v-model="boolean4" />
-          </p>
-          <p class="label_field_pair">
-            <label for="checkbox5">Add Pouty Lips</label>
-            <input type="checkbox" id="checkbox5" v-model="boolean5" />
-          </p>
-          <form>
-            <span>Color Filter</span>
-            <br />
-            <input
-              type="radio"
-              name="color"
-              value="standard"
-              v-model="picked"
-              checked
-            />
-            <input
-              type="radio"
-              name="color"
-              value="brown-filter"
-              v-model="picked"
-            />
-            <input
-              type="radio"
-              name="color"
-              value="blue-filter"
-              v-model="picked"
-            />
-
-            <br />
-            <img class="color-square" src="../assets/white.png" alt />
-            <img class="color-square" src="../assets/brown.png" alt />
-            <img class="color-square" src="../assets/blue.png" alt />
-          </form>
-        </v-card>
-      </v-flex>
-    </v-layout>
-    <!-- </div> -->
-    <v-btn color="#474747" v-on:click="makePerfect()">
-      <span class="white--text font-weight-light">
-        Make This
-        <br />Picture Perfect!
-      </span>
-    </v-btn>
   </v-container>
 </template>
 
